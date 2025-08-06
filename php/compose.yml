@@ -22,7 +22,7 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: pass
     ports:
-      - "3306:3306" # 13306に変更するとDB課題のリポジトリのポート番号とコンフリクト
+      - "23306:3306" # 13306に変更するとDB課題のリポジトリのポート番号とコンフリクトするであろうと言う予測のもと
     volumes:
       - db-data:/var/lib/mysql
 
