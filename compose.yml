@@ -1,0 +1,27 @@
+services:
+  web:
+    image: php:8.2-apache
+    container_name: php-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./php:/var/www/html
+    restart: unless-stopped
+
+  # 任意でDBを追加する場合
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: php-app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    ports:
+      - "3306:3306" //TODO 13306だとDB課題とコンフリクト
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
