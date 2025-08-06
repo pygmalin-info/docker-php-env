@@ -1,4 +1,4 @@
-FROM php:8.2-apache
+FROM php:8.3-apache
 
 # mod_rewrite有効化（.htaccessで必要）
 RUN a2enmod rewrite
