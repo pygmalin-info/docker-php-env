@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php-apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./htdocs:/var/www/html
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: php-app
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    ports:
+      - "3306:3306" # 13306に変更するとDB課題のリポジトリのポート番号とコンフリクト
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
