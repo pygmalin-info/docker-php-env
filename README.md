@@ -1,2 +1,2 @@
 # docker-php-env
-PHP、Apache、MySQLのDocker環境
+PHP、Apache、MySQL(LHのPHP課題用 )のDocker環境
