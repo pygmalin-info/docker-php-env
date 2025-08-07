@@ -1,4 +1,10 @@
+# Composerのベースイメージ
+FROM composer:latest as composer
+
 FROM php:8.3-apache
+
+# Composer をインストール
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # mod_rewrite有効化（.htaccessで必要）
 RUN a2enmod rewrite

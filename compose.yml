@@ -1,8 +1,11 @@
+name: docker-php-env
+
 services:
   web:
     build:
-      context: .
+      context: ./php
       dockerfile: Dockerfile
+    platform: linux/x86_64
     container_name: php-apache
     ports:
       - "8081:80"
@@ -12,6 +15,7 @@ services:
 
   db:
     image: mysql:8.0
+    platform: linux/x86_64
     container_name: mysql
     restart: unless-stopped
     environment:
